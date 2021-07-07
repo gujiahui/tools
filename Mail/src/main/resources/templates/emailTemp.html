@@ -1,0 +1,29 @@
+<!--
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>账号注册频繁</title>
+    <style>
+        body {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+    </style>
+</head>
+<body>
+<div id="welcome">
+   	<h3 style="text-align: center;"><span th:text="检查用户注册频繁，请进一步核查"></span></h3>
+    <div style="text-align: center; padding: 10px">
+		<span ><span th:text="${timeStamp} "></span>&nbsp; 程序检测到<span style="color: red;"  th:text="${lastTime} "></span> 分钟内注册账号达到<span  style="color: red;" th:text="${registCount} "></span>条，
+		超出预警数量(<span th:text="${registLimit} "></span>条),请尽快确认！</span>
+        <br /><br />
+    </div>
+    <div style="text-align: center; padding: 4px">
+   <span style="color: red;" th:text="系统发送，请勿回复！"></span>
+    </div>
+</div>
+</body>
+</html>-->
