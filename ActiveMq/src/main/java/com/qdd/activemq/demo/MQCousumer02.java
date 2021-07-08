@@ -36,7 +36,7 @@ public class MQCousumer02 {
             // 创建接收或发送的线程实例
             session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);
             // 创建队列（返回一个消息目的地）
-            destination = session.createTopic("testTopic");
+            destination = session.createTopic("test1-topic");
             // 创建消息订阅者
             MessageConsumer consumer = session.createConsumer(destination);
             // 消息发布者添加监听器
