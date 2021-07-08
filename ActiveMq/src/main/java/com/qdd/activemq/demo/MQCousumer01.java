@@ -1,11 +1,6 @@
 package com.qdd.activemq.demo;
 
-import javax.jms.Connection;
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
-import javax.jms.JMSException;
-import javax.jms.MessageConsumer;
-import javax.jms.Session;
+import javax.jms.*;
 
 import com.qdd.activemq.common.Constants;
 import lombok.extern.slf4j.Slf4j;
@@ -37,14 +32,17 @@ public class MQCousumer01 {
             // 启动连接
             connection.start();
             // 创建接收或发送的线程实例
-            session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);
+            session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
             // 创建队列（返回一个消息目的地）
-            destination = session.createTopic("test1-topic");
+            destination = session.createTopic("FirstTopic");
             // 创建消息订阅者
             MessageConsumer consumer = session.createConsumer(destination);
-            log.info("c:"+consumer.receive());
             // 消息发布者添加监听器
             consumer.setMessageListener(new Listerner01());
+//            TextMessage message = (TextMessage) consumer.receive(1000);
+//            if (null != message) {
+//                System.out.println("订阅1收到消息" + message.getText());
+//            }
         } catch (JMSException e) {
             e.printStackTrace();
         }

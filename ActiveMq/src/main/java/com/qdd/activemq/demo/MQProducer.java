@@ -36,15 +36,17 @@ public class MQProducer {
             // 启动连接
             connection.start();
             // 创建接收或发送的线程实例（创建session的时候定义是否要启用事务，且事务类型是Auto_ACKNOWLEDGE也就是消费者成功在Listern中获得消息返回时，会话自动确定用户收到消息）
+//            session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
             session = connection.createSession(Boolean.TRUE, Session.AUTO_ACKNOWLEDGE);
             // 创建队列（返回一个消息目的地）
-            destination = session.createTopic("test1-topic");
+            destination = session.createTopic("FirstTopic");
             // 创建消息发布者
             MessageProducer producer = session.createProducer(destination);
             // 创建TextMessage消息
             TextMessage message = session.createTextMessage("你好，这是我发布的第一条消息！");
             // 发布消息
             producer.send(message);
+            session.commit();
         } catch (JMSException e) {
             e.printStackTrace();
         } finally {
